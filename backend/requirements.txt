@@ -1,0 +1,11 @@
+langchain
+langchain-community
+psycopg2-binary
+sqlalchemy
+pgvector
+fastapi
+uvicorn
+datasets
+langchain-ollama
+langchain-postgres
+sqlalchemy-utils
