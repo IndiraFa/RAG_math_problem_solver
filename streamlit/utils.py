@@ -1,7 +1,8 @@
 """
 Utility functions for Streamlit applications.
-This module provides functions to set a background image for the Streamlit app
-and to convert an image file to a base64 encoded string.
+This module provides functions to set a background image for the Streamlit app,
+to convert an image file to a base64 encoded string
+and to set CSS styles for the chat interface.
 """
 import streamlit as st
 import base64
@@ -53,3 +54,46 @@ def set_background(image_path):
     </style>
     """
     st.markdown(css, unsafe_allow_html=True)
+
+def set_chat_css():
+    """
+    Set the CSS styles for the chat interface.
+    This function styles the chat bubbles, profile icons, and overall layout.
+    """
+    chat_css = """
+    <style>
+    .chat-container {
+        display: flex;
+        width: 100%;
+        margin-bottom: 1rem;
+        align-items: flex-start;
+    }
+
+    .chat-bubble {
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        max-width: 80%;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        color: #333;
+        word-wrap: break-word;
+    }
+
+    .chat-left {
+        justify-content: flex-start;
+        flex-direction: row;
+    }
+
+    .chat-right {
+        justify-content: flex-end;
+        flex-direction: row-reverse;
+    }
+
+    .profile-icon {
+        font-size: 1.5rem;
+        margin: 0 0.5rem;
+        line-height: 1;
+    }
+    </style>
+    """
+    st.markdown(chat_css, unsafe_allow_html=True)

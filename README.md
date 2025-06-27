@@ -17,7 +17,8 @@ RAG_math_problem_solver/    # Root project directory
 │    └──requirements.txt    # Python dependencies for backend
 │    └──Dockerfile          # Dockerfile to contenerize the FastAPI backend
 ├── streamlit               # Streamlit-based frontend
-│    └──streamlit_app.py    # Streamlit web interface for interacting with the RAG system 
+│    └──streamlit_app.py    # Streamlit web interface for interacting with the RAG system
+│    └──utils.py            # Utility functions for the Streamlit app
 │    └──requirements.txt    # Python dependencies for Streamlit
 │    └──Dockerfile          # Dockerfile to contenerize the Streamlit frontend
 ├── .env                    # Environment variables (e.g., DATABASE_URL, OLLAMA_URL)

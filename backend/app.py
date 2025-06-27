@@ -26,7 +26,8 @@ vectorstore = PGVector(
     embedding_function=embedding,
 )
 
-llm = Ollama(model="llama3", base_url=ollama_url)
+#llm = Ollama(model="llama3", base_url=ollama_url)
+llm = Ollama(model="gemma:2b", base_url=ollama_url)
 
 qa = RetrievalQA.from_chain_type(llm=llm, retriever=vectorstore.as_retriever())
 

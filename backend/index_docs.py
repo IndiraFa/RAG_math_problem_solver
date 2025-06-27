@@ -17,7 +17,7 @@ if not db_url:
 
 # === Load Dataset ===
 print(f"Loading dataset: {dataset_name}...")
-dataset = load_dataset(dataset_name, split=split)#.select(range(100)) # Limit to 100 samples for testing
+dataset = load_dataset(dataset_name, split=split).select(range(200)) # Limit to 200 samples for testing
 
 print(f"Loaded {len(dataset)} samples.")
 
@@ -65,8 +65,8 @@ failed = 0
 for i, item in enumerate(dataset):
     question = item.get("question", "").strip()
     # Handle possible variations in answer format
-    print(f"Processing item {i + 1}/{len(dataset)}: {question}")
     answer_raw = item.get("answer", "")
+    print(f"Processing item {i + 1}/{len(dataset)}: {question} -> {answer_raw}")
     if isinstance(answer_raw, dict):
         answer = answer_raw.get("text", [""])[0]
     elif isinstance(answer_raw, str):

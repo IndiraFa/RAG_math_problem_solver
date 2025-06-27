@@ -8,7 +8,7 @@ Author: Indira FABRE
 
 import streamlit as st
 import requests
-from utils import set_background
+from utils import set_background, set_chat_css
 
 FASTAPI_URL = "http://backend:8000" 
 
@@ -37,5 +37,57 @@ if query:
         st.session_state.chat.append(("assistant", answer))
 
 # Display chat
+# chat_css = """
+# <style>
+# .chat-container {
+#     display: flex;
+#     width: 100%;
+#     margin-bottom: 1rem;
+#     align-items: flex-start;
+# }
+
+# .chat-bubble {
+#     background-color: rgba(255, 255, 255, 0.85);
+#     border-radius: 12px;
+#     padding: 0.75rem 1rem;
+#     max-width: 80%;
+#     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+#     color: #333;
+#     word-wrap: break-word;
+# }
+
+# .chat-left {
+#     justify-content: flex-start;
+#     flex-direction: row;
+# }
+
+# .chat-right {
+#     justify-content: flex-end;
+#     flex-direction: row-reverse;
+# }
+
+# .profile-icon {
+#     font-size: 1.5rem;
+#     margin: 0 0.5rem;
+#     line-height: 1;
+# }
+# </style>
+# """
+# st.markdown(chat_css, unsafe_allow_html=True)
+
+
+set_chat_css()
+
 for role, msg in st.session_state.chat:
-    st.chat_message(role).write(msg)
+    align_class = "chat-left" if role == "assistant" else "chat-right"
+    icon = "🤖" if role == "assistant" else "👩🏽"
+    st.markdown(
+        f'''
+        <div class="chat-container {align_class}">
+            <div class="profile-icon">{icon}</div>
+            <div class="chat-bubble">{msg}</div>
+        </div>
+        ''',
+        unsafe_allow_html=True
+    )
+
