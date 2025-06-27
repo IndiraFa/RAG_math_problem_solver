@@ -1,9 +1,28 @@
+"""
+Streamlit application for the Math RAG Assistant.
+This application allows users to ask math-related questions and get answers
+using a Retrieval-Augmented Generation (RAG) model.
+
+Author: Indira FABRE
+"""
+
 import streamlit as st
 import requests
+from utils import set_background
 
 FASTAPI_URL = "http://backend:8000" 
 
-st.title("🧮 Math RAG Assistant")
+image_path = "images/background.png"
+
+# Set background image
+set_background(image_path)
+
+# Title box using HTML
+st.markdown("""
+<div class="title-box">
+    <h1>🧮 Math RAG Assistant</h1>
+</div>
+""", unsafe_allow_html=True)
 
 if "chat" not in st.session_state:
     st.session_state.chat = []
