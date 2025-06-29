@@ -17,7 +17,7 @@ if not db_url:
 
 # === Load Dataset ===
 print(f"Loading dataset: {dataset_name}...")
-dataset = load_dataset(dataset_name, split=split).select(range(200)) # Limit to 200 samples for testing
+dataset = load_dataset(dataset_name, split=split).select(range(500)) # Limit to 200 samples for testing
 
 print(f"Loaded {len(dataset)} samples.")
 
@@ -28,7 +28,6 @@ try:
     embedding = OllamaEmbeddings(model="nomic-embed-text", base_url=ollama_url)
 except Exception as e:
     raise RuntimeError(f"Failed to connect to Ollama embeddings: {e}")
-
 
 
 # === Temp instance to delete collection ===

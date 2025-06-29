@@ -55,6 +55,7 @@ def set_background(image_path):
     """
     st.markdown(css, unsafe_allow_html=True)
 
+
 def set_chat_css():
     """
     Set the CSS styles for the chat interface.
@@ -77,22 +78,15 @@ def set_chat_css():
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         color: #333;
         word-wrap: break-word;
-    }
-
-    .chat-left {
-        justify-content: flex-start;
-        flex-direction: row;
-    }
-
-    .chat-right {
-        justify-content: flex-end;
-        flex-direction: row-reverse;
+        margin-left: 2.5rem; /* Add space for the profile icon */
     }
 
     .profile-icon {
         font-size: 1.5rem;
-        margin: 0 0.5rem;
+        margin-right: 0.5rem;
         line-height: 1;
+        position: absolute; /* Position the icon absolutely */
+        left: 0; /* Align it to the left */
     }
     </style>
     """

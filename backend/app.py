@@ -16,6 +16,7 @@ ollama_url = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 collection_name = "math_qa"
 db_url = os.environ.get("DATABASE_URL")
 engine = create_engine(db_url)
+llm_model_name = "llama3"  # tried: "llama3", "gemma:2b"
 
 # Initialize Embeddings and Vector DB
 embedding = OllamaEmbeddings(model="nomic-embed-text", base_url=ollama_url)
@@ -27,7 +28,7 @@ vectorstore = PGVector(
 )
 
 #llm = Ollama(model="llama3", base_url=ollama_url)
-llm = Ollama(model="gemma:2b", base_url=ollama_url)
+llm = Ollama(model=llm_model_name, base_url=ollama_url)
 
 qa = RetrievalQA.from_chain_type(llm=llm, retriever=vectorstore.as_retriever())
 
@@ -44,6 +45,10 @@ def llm_only(q: str):
 
 @app.get("/debug/vector_count")
 def count_docs():
+    """
+    Count the number of documents in the vectorstore collection.
+    Returns a JSON object with the count.
+    """
     with engine.connect() as conn:
         # Step 1: Get collection ID
         collection_result = conn.execute(
