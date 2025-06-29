@@ -1,3 +1,13 @@
+"""
+Script to set up a FastAPI application with LangChain and Ollama for math 
+question answering.
+This script initializes a vector store using PGVector, sets up an LLM with 
+Ollama, and provides endpoints to ask questions and retrieve answers.
+
+Author: Indira FABRE
+"""
+
+
 from fastapi import FastAPI
 from langchain.embeddings import OllamaEmbeddings
 from langchain.vectorstores.pgvector import PGVector

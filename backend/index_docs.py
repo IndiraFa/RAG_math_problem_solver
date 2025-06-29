@@ -1,3 +1,9 @@
+"""
+This script indexes the Microsoft Orca Math Word Problems dataset into a 
+PGVector database using Ollama embeddings.
+
+Author: Indira FABRE
+"""
 from datasets import load_dataset
 from langchain_ollama import OllamaEmbeddings
 from langchain_community.vectorstores.pgvector import PGVector
